@@ -2,8 +2,15 @@ name: Publish extension
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
+    paths:
+      - composer.json
+      - .github/workflows/publish-extension.yml
+
+concurrency:
+  group: extension-mesh-publish
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -19,5 +26,30 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Prepare release version
+        id: version
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          current_version="$(jq -er '.version | select(type == "string" and length > 0)' composer.json)"
+
+          if [[ ! "$current_version" =~ ^[0-9]+(\.[0-9]+){1,3}([-+][0-9A-Za-z.-]+)?$ ]]; then
+            echo "Unsupported Composer version: $current_version" >&2
+            exit 1
+          fi
+
+          release_tag="v$current_version"
+          if gh release view "$release_tag" >/dev/null 2>&1; then
+            echo "Release $release_tag already exists; skipping publication."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Publishing version $current_version as v$current_version."
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "EXTENSION_MESH_TAG=$release_tag" >> "$GITHUB_ENV"
+
       - name: Build and publish
+        if: steps.version.outputs.changed == 'true'
         uses: Extension-Mesh/shopware/.github/actions/publish-shopware@v0.1.0-alpha.3
