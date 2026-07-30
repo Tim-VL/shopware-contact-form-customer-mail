@@ -1,0 +1,32 @@
+{
+    "schemaVersion": 1,
+    "name": "aggrosoft/shopware-contact-form-customer-mail",
+    "extensions": [
+        {
+            "name": "AggroContactFormSenderMailPlugin",
+            "label": {
+                "de-DE": "Kontaktformular Kundenmail als Antwortadresse",
+                "en-GB": "Contact form customer mail as reply-to"
+            },
+            "description": {
+                "de-DE": "Setzt die im Shopware-Kontaktformular \u00fcbermittelte Kunden-E-Mail automatisch als Reply-To-Adresse, damit Serviceteams Anfragen direkt beantworten k\u00f6nnen.",
+                "en-GB": "Automatically uses the customer email submitted through the standard Shopware contact form as the Reply-To address, so service teams can answer requests directly."
+            },
+            "manufacturer": "Aggrosoft GmbH",
+            "license": "MIT",
+            "homepage": "https://github.com/aggrosoft/shopware-contact-form-customer-mail",
+            "releases": [
+                {
+                    "version": "4.0.1",
+                    "shopware": "~6.7.0",
+                    "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
+                    "downloadUrl": "https://github.com/aggrosoft/shopware-contact-form-customer-mail/releases/download/v4.0.1/AggroContactFormSenderMailPlugin-4.0.1.zip",
+                    "sha256": "58e99909d499a9a0f45cd860f46d75b534c9d5e6c5c589f77026304ec058cd97",
+                    "releasedAt": "2026-07-30T14:30:17+00:00",
+                    "security": false,
+                    "changelogUrl": "https://github.com/aggrosoft/shopware-contact-form-customer-mail/releases/tag/v4.0.1"
+                }
+            ]
+        }
+    ]
+}
