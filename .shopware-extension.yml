@@ -1,0 +1,105 @@
+compatibility_date: "2026-02-11"
+
+store:
+  availabilities:
+    - German
+    - International
+  default_locale: en_GB
+  localizations:
+    - de_DE
+    - en_GB
+  categories:
+    - Sonderfunktionen
+  type: extension
+  icon: src/Resources/config/plugin.png
+  automatic_bugfix_version_compatibility: true
+  meta_title:
+    de: Kontaktformular – Kunden-E-Mail als Antwortadresse
+    en: Contact form – customer email as reply-to address
+  meta_description:
+    de: Setzt die im Shopware-Kontaktformular eingegebene Kunden-E-Mail automatisch als Antwortadresse für die versendete Nachricht.
+    en: Automatically uses the customer email entered in the Shopware contact form as the reply-to address of the outgoing message.
+  description:
+    de: >-
+      Das Plugin setzt die im Shopware-Kontaktformular angegebene
+      E-Mail-Adresse als Antwortadresse (Reply-To) der versendeten Nachricht.
+      So kann das Serviceteam direkt auf die Kontaktanfrage antworten, ohne die
+      Empfängeradresse manuell aus dem Nachrichtentext zu übernehmen.
+    en: >-
+      The plugin sets the email address submitted through the Shopware contact
+      form as the Reply-To address of the outgoing message. Customer service
+      can reply directly to a contact request without copying the recipient
+      address from the message body.
+  installation_manual:
+    de: >-
+      Installiere und aktiviere die Erweiterung im Shopware Extension Manager.
+      Eine weitere Konfiguration ist nicht erforderlich. Bei Nachrichten aus
+      dem Standard-Kontaktformular wird die übermittelte E-Mail-Adresse
+      automatisch als Antwortadresse gesetzt.
+    en: >-
+      Install and activate the extension in the Shopware Extension Manager. No
+      further configuration is required. Messages sent through the standard
+      contact form automatically use the submitted email address as their
+      reply-to address.
+  tags:
+    de:
+      - Kontaktformular
+      - E-Mail
+      - Antwortadresse
+      - Kundenservice
+    en:
+      - contact form
+      - email
+      - reply-to
+      - customer service
+  highlights:
+    de:
+      - Direkte Antworten auf Kontaktanfragen
+      - Automatische Reply-To-Adresse
+      - Keine Konfiguration erforderlich
+    en:
+      - Reply directly to contact requests
+      - Automatic Reply-To address
+      - No configuration required
+  features:
+    de:
+      - Verwendet die Kunden-E-Mail aus dem Standard-Kontaktformular
+      - Setzt die Adresse vor der Validierung der Mailvorlage
+      - Verändert nicht die konfigurierte Absenderadresse
+      - Funktioniert automatisch nach der Aktivierung
+    en:
+      - Uses the customer email from the standard contact form
+      - Sets the address before mail-template validation
+      - Does not change the configured sender address
+      - Works automatically after activation
+  faq:
+    de:
+      - question: Muss das Plugin konfiguriert werden?
+        answer: Nein. Nach Installation und Aktivierung arbeitet es automatisch.
+        position: 1
+      - question: Wird die Absenderadresse verändert?
+        answer: Nein. Das Plugin setzt ausschließlich die Reply-To-Adresse.
+        position: 2
+    en:
+      - question: Does the plugin require configuration?
+        answer: No. It works automatically after installation and activation.
+        position: 1
+      - question: Does it change the sender address?
+        answer: No. The plugin only sets the Reply-To address.
+        position: 2
+
+build:
+  shopwareVersionConstraint: "~6.7.0"
+  zip:
+    composer:
+      enabled: false
+    assets:
+      enabled: false
+    pack:
+      excludes:
+        paths:
+          - .github
+          - .idea
+
+validation:
+  store_compliance: true

@@ -1,0 +1,23 @@
+name: Publish extension
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Build and publish
+        uses: Extension-Mesh/shopware/.github/actions/publish-shopware@v0.1.0-alpha.3
